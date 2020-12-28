@@ -14,7 +14,14 @@ public class Conta {
 	private Integer numero;
 	private String titular;
 	private Double saldo;
+	private int status;
 	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public Double getSaldo() {
 		return saldo;
 	}
