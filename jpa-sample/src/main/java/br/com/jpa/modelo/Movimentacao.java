@@ -3,6 +3,7 @@ package br.com.jpa.modelo;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Movimentacoes")
@@ -23,8 +25,26 @@ public class Movimentacao {
 	private LocalDateTime data;
 	private String descricao;
 	private BigDecimal valor;
+	
 	@ManyToOne
 	private Conta conta;
+	public Conta getConta() {
+		return conta;
+	}
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
+	@ManyToMany
+	private List<Categoria> categorias;
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 
 	public Long getId() {
 		return id;
@@ -66,11 +86,4 @@ public class Movimentacao {
 		this.descricao = descricao;
 	}
 
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
 }
