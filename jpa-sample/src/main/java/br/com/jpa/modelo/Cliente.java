@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Clientes")
@@ -40,6 +41,7 @@ public class Cliente {
 	private String profissao;
 	private String endereco;
 	
+	@JoinColumn(unique = true) //constraint chave estrangeira única.
 	@ManyToOne
 	private Conta conta;
 	public Conta getConta() {
